@@ -8,6 +8,14 @@ ActiveRecord::Base.establish_connection(
 )
 
 get '/' do
-  {:message => 'Not allowed. Please try
-    "/api/movienumbers"'}.to_json
-  end
+  movstat = Movstat.create({:title => 'movie', :yearrelease => '1999', :productionbudget => '10000000', :worldwidegross => '200000000'}).to_json
+end
+
+get '/api/movstats' do
+  Movstat.all.to_json
+end
+
+get '/api/movstats/:id' do
+  puts params
+  Movstat.find(params[:id]).to_json
+end
