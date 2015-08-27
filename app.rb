@@ -1,5 +1,5 @@
 require 'bundler'
-Bundler.require
+Bundler.require()
 
 ActiveRecord::Base.establish_connection(
   :adapter => "postgresql",
@@ -8,14 +8,47 @@ ActiveRecord::Base.establish_connection(
 )
 
 get '/' do
-  movstat = Movstat.create({:title => 'movie', :yearrelease => '1999', :productionbudget => '10000000', :worldwidegross => '200000000'}).to_json
+  movie = Movie.create({:title => '', :yearrelease => '', :productionbudget => '', :worldwidegross => ''})
 end
 
-get '/api/movstats' do
-  Movstat.all.to_json
+get '/api/movies' do
+  Movie.all.to_json
 end
 
-get '/api/movstats/:id' do
+get '/api/movies/:id' do
   puts params
-  Movstat.find(params[:id]).to_json
+  Movie.find(params[:id]).to_json
+end
+
+post '/api/movies' do
+  puts params
+  Movie.create({
+    :title => params[:title],
+    :yearrelease => params[:yearrelease],
+    :productionbudget => params[:productionbudget],
+    :worldwidegross => params[:worldwidegross]}).to_json
+end
+
+put '/api/movies/:id' do
+  movie_args = {
+    :title => params[:title], :yearrelease => params[:yearrelease], :productionbudget => params[:productionbudget], :worldwidegross => params[:worldwidegross]  }
+
+
+    @movie = Movie.find(params[:id])
+    @movie = update(movie_args)
+    @movie.to_json
+end
+
+patch '/api/movies/:id' do
+  movie_args = {
+    :title => params[:title], :yearrelease => params[:yearrelease], :productionbudget => params[:productionbudget], :worldwidegross => params[:worldwidegross] }
+
+      @movie = Movie.find(params[:id])
+      @movie = update(movie_args)
+      @movie.to_json
+end
+
+
+delete '/api/movies/:id' do
+  Movie.destroy(params[:id]).to_json
 end
