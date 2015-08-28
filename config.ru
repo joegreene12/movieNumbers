@@ -1,4 +1,4 @@
 require './app'
-require './Movie'
+require './models/Movie'
 
 run Sinatra::Application
