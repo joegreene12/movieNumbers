@@ -1,7 +1,6 @@
 
 
 
-
 var movienumber = movienumber || {};
 movienumber.blueprints = movienumber.blueprints || {};
 movienumber.active = movienumber.active || {};
@@ -9,7 +8,6 @@ movienumber.active = movienumber.active || {};
 movienumber.blueprints.model = Backbone.Model.extend({
   initialize: function() {
       console.log('ready with the model');
-
   }
 });
 
@@ -42,7 +40,6 @@ movienumber.create = function(title, yearrelease, productionbudget, worldwidegro
   return true;
 
 };
-
 
 movienumber.blueprints.collectionView = Backbone.View.extend({
   initialize: function() {
