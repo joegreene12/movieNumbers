@@ -37,6 +37,7 @@ GEM
     sinatra-activerecord (2.0.8)
       activerecord (>= 3.2)
       sinatra (~> 1.0)
+    sinatra-cross_origin (0.3.2)
     slop (3.6.0)
     thread_safe (0.3.5)
     tilt (2.0.1)
@@ -53,6 +54,7 @@ DEPENDENCIES
   pry
   sinatra
   sinatra-activerecord
+  sinatra-cross_origin
 
 BUNDLED WITH
    1.10.6
