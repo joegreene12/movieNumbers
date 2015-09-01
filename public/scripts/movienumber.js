@@ -1,9 +1,8 @@
 
-
-
 var movienumber = movienumber || {};
 movienumber.blueprints = movienumber.blueprints || {};
 movienumber.active = movienumber.active || {};
+
 
 movienumber.blueprints.model = Backbone.Model.extend({
   initialize: function() {
@@ -12,7 +11,7 @@ movienumber.blueprints.model = Backbone.Model.extend({
 });
 
 movienumber.blueprints.collection = Backbone.Collection.extend({
-  url: '/api/movienumber',
+  url: '/api/movies?api_key='+global.apiKey,
   model: movienumber.blueprints.model,
   initialize: function() {
     console.log('a collection is ready');
@@ -26,7 +25,7 @@ movienumber.blueprints.collection = Backbone.Collection.extend({
 // CREATE CRUD
 movienumber.create = function(title, yearrelease, productionbudget, worldwidegross) {
 
-  if (!title || !yearrelease || !productionbudget !worldwidegross) {
+  if (!title || !yearrelease || !productionbudget || !worldwidegross) {
     console.log('you are missing a parameter!');
     return false;
   }
@@ -43,7 +42,7 @@ movienumber.create = function(title, yearrelease, productionbudget, worldwidegro
 
 movienumber.blueprints.collectionView = Backbone.View.extend({
   initialize: function() {
-    this.$el = $('.movienumbers');
+    this.$el = $('.movies');
 
     this.render();
     var that = this;
@@ -51,7 +50,7 @@ movienumber.blueprints.collectionView = Backbone.View.extend({
       that.render();
     });
   },
-  render: funtion() {
+  render: function() {
     this.$el.html('');
 
     var models = this.collection.models;
@@ -67,11 +66,13 @@ movienumber.blueprints.collectionView = Backbone.View.extend({
 
 movienumber.blueprints.modelView = Backbone.View.extend({
   initialize: function() {
-    this.$el = $('.movienumbers');
-    this.template = _.template($('#table-row-template').html());
+
+    this.$el = $('.movies');
+    this.template = _.template($('#movietemp').html());
     this.render();
   },
-  render: funtion() {
+  render: function() {
+
     var data = this.model.attributes;
     this.$el.append(this.template(data));
   }

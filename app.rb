@@ -18,18 +18,28 @@ end
 
 
 get '/' do
-  movie = Movie.create({:title => '', :yearrelease => '', :productionbudget => '', :worldwidegross => ''})
+  @key = ENV["API_KEY"]
+  print @key
+  erb :movienumber
 end
 
-## get
+## get()
+def authorized?(requested)
+  if !params[:api_key].nil? && params[:api_key] == ENV["API_KEY"]
+    return requested.to_json
+  else
+    return {:status => '403', :message => 'not authorized'}.to_json
+  end
+end
+
 get '/api/movies' do
-  Movie.all.to_json
+   authorized?(Movie.all)
 end
 
 #get by id
 get '/api/movies/:id' do
   puts params
-  Movie.find(params[:id]).to_json
+  authorized?(Movie.find(params[:id]))
 end
 
 #create
@@ -63,52 +73,48 @@ put '/api/movies/:id' do
     # use params
   # end`
 
-
-  movie_args = {
-    :title => params[:title], :yearrelease => params[:yearrelease], :productionbudget => params[:productionbudget], :worldwidegross => params[:worldwidegross]  }
-
-
+movie_args = {
+  :title => params[:title], :yearrelease => params[:yearrelease], :productionbudget => params[:productionbudget], :worldwidegross => params[:worldwidegross]  }
     @movie = Movie.find(params[:id])
     @movie = update(movie_args)
     @movie.to_json
 end
 
 put '/api/movienumber/:id' do
-  request_body = JSON.parse(request.body.read.to_s)
-  @id = params[:id]
-  @movie = Movie.find(@id)
-  @movie.title = request_body[:title]
-  @movie.yearrelease = request_body[:yearrelease]
-  @movie.productionbudget = request_body[:productionbudget]
-  @movie.worldwidegross = request_body[:worldwidegross]
-  @movie.save
-  @movie.to_json
+    request_body = JSON.parse(request.body.read.to_s)
+    @id = params[:id]
+    @movie = Movie.find(@id)
+    @movie.title = request_body[:title]
+    @movie.yearrelease = request_body[:yearrelease]
+    @movie.productionbudget = request_body[:productionbudget]
+    @movie.worldwidegross = request_body[:worldwidegross]
+    @movie.save
+    @movie.to_json
 end
 
 
 patch '/api/movies/:id' do
-  movie_args = {
+    movie_args = {
     :title => params[:title], :yearrelease => params[:yearrelease], :productionbudget => params[:productionbudget], :worldwidegross => params[:worldwidegross] }
-
-      @movie = Movie.find(params[:id])
-      @movie = update(movie_args)
-      @movie.to_json
+    @movie = Movie.find(params[:id])
+    @movie = update(movie_args)
+    @movie.to_json
 end
 
 patch '/api/movienumber/:id' do
-  request_body = JSON.parse(request.body.read.to_s)
-  @id = params[:id]
-  @movie = Movie.find(@id)
-  @movie.title = request_body[:title]
-  @movie.yearrelease = request_body[:yearrelease]
-  @movie.productionbudget = request_body[:productionbudget]
-  @movie.worldwidegross = request_body[:worldwidegross]
-  @movie.save
-  @movie.to_json
+    request_body = JSON.parse(request.body.read.to_s)
+    @id = params[:id]
+    @movie = Movie.find(@id)
+    @movie.title = request_body[:title]
+    @movie.yearrelease = request_body[:yearrelease]
+    @movie.productionbudget = request_body[:productionbudget]
+    @movie.worldwidegross = request_body[:worldwidegross]
+    @movie.save
+    @movie.to_json
 end
 
 
 #delete
 delete '/api/movies/:id' do
-  Movie.destroy(params[:id]).to_json
+    Movie.destroy(params[:id]).to_json
 end
