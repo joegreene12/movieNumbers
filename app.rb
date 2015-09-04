@@ -4,7 +4,6 @@ Bundler.require()
 ActiveRecord::Base.establish_connection(
   :adapter => "postgresql",
   :database => "movienumbers"
-
 )
 
 
@@ -12,11 +11,8 @@ get '/movienumber' do
   erb:movienumber
 end
 
-
 ## get
 # get 'api/m'
-
-
 get '/' do
   @key = ENV["API_KEY"]
   print @key
@@ -32,8 +28,10 @@ def authorized?(requested)
   end
 end
 
+## get all movies
 get '/api/movies' do
    authorized?(Movie.all)
+  #Money.new(Movie.productionbudget, "USD")
 end
 
 #get by id
@@ -58,20 +56,8 @@ post '/api/movienumber' do
   Movie.create(request_body).to_json
 end
 
-
-
-
-
 ##update
 put '/api/movies/:id' do
-
-  # build movie_args
-  # if params[:title].nil?
-
-    # check request body
-  # else
-    # use params
-  # end`
 
 movie_args = {
   :title => params[:title], :yearrelease => params[:yearrelease], :productionbudget => params[:productionbudget], :worldwidegross => params[:worldwidegross]  }
@@ -80,6 +66,7 @@ movie_args = {
     @movie.to_json
 end
 
+##update
 put '/api/movienumber/:id' do
     request_body = JSON.parse(request.body.read.to_s)
     @id = params[:id]
@@ -91,7 +78,6 @@ put '/api/movienumber/:id' do
     @movie.save
     @movie.to_json
 end
-
 
 patch '/api/movies/:id' do
     movie_args = {
@@ -112,7 +98,6 @@ patch '/api/movienumber/:id' do
     @movie.save
     @movie.to_json
 end
-
 
 #delete
 delete '/api/movies/:id' do

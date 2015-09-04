@@ -1,4 +1,4 @@
-<h1>Mov Numbers</h1>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="/style/main.css" media="screen" title="no title" charset="utf-8">
 
@@ -17,6 +17,51 @@
   var global = global || {};
   global.apiKey = '<%= @key %>';
 </script>
+
+
+
+<style>
+.affix {
+    top: 0;
+    width: 100%;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    background-color: #F44336;
+    border-color: #F44336;
+
+}
+.affix a {
+    color: #fff !important;
+    padding: 10px !important;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.affix-top a {
+    padding: 10px !important;
+}
+.affix + .container-fluid {
+    padding-top: 45px;
+}
+</style>
+ </head>
+<body>
+
+<div class="container-fluid" style="background-color:#F44336;color:#fff;height:200px;">
+<a name="home"></a>
+<h1>Movie Budgets</h1>
+<h3>Top 20 Movies with Highest Budget</h3>
+</div>
+
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+<ul class="nav navbar-nav">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#about us">About Us</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+
+
 <script type="text/template" id='movietemp'>
   <tr>
     <td>
@@ -26,29 +71,29 @@
       <%%= yearrelease %>
     </td>
     <td>
-      <%%= productionbudget %>
+      $<%%= productionbudget %>0
     </td>
     <td>
-      <%%= worldwidegross %>
+      $<%%= worldwidegross %>0
     </td>
 
 </script>
 
-<h1>Movie Numbers</h1>
-<h3>just some info</h3>
+<h2>Biggest Budgets</h2>
+<!-- <h3>just some info</h3>
 
-<button type="submit" class="btn btn-default">button</button>
+<button type="submit" class="btn btn-default">button</button> -->
 
 
 <div class="boxer">
   <div id="goodtimes">
-    <table>
+    <table class="table table-column">
       <thead>
         <tr>
           <th>Title</th>
           <th>Year Release</th>
           <th>Budget Production</th>
-          <th>World Wide Gro$$</th>
+          <th>World Wide Gross</th>
         </tr>
       </thead>
       <tbody class='movies'>
@@ -58,72 +103,71 @@
 </div>
 
 
+<div class="panel panel-transparent">
+  <div class="panel-heading">
+    <a name="about us"></a>
+    <h2 class="panel-title">About Us</h2>
+  </div>
+  <div class="panel-body">
 
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <style>
-  .affix {
-      top: 0;
-      width: 100%;
-      -webkit-transition: all .5s ease-in-out;
-      transition: all .5s ease-in-out;
-      background-color: #F44336;
-      border-color: #F44336;
+<p id="rock">
+  The movieNumbers application was officially launched on September, 2015 as a free resource for industry insiders,
+  investors, and movie fans to track business information on movies. In its inception,
+  with just 20 tracked movies, the site will be growing to accomodate the needs of providing movie industry information
+  on the web. Over 10 movies and nearly 15 people are now able to track through our api for developers. We will continue our commitment to making this data available
+  to the widest possible audience with permission.
 
-  }
-  .affix a {
-      color: #fff !important;
-      padding: 15px !important;
-      -webkit-transition: all .5s ease-in-out;
-      transition: all .5s ease-in-out;
-  }
-  .affix-top a {
-      padding: 25px !important;
-  }
-  .affix + .container-fluid {
-      padding-top: 95px;
-  }
-  </style>
-</head>
-<body>
+  If you are a developer who would like to make an api call (get request only), feel free to email in the contact information below. Thanks!
+  The site has been running since its inception by Darth Vada, with the help of team Darth Vader at G.A. located in Chicago, IL.
+</p>
 
-<div class="container-fluid" style="background-color:#F44336;color:#fff;height:200px;">
-  <h1>Bootstrap Affix Example</h1>
-  <h3>Fixed (sticky) navbar on scroll</h3>
-  <p>Scroll this page.</p>
-  <p>The navbar is attached to the top of the page after you have scrolled a specified amount of pixels.</p>
+</div>
 </div>
 
-<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
-  <ul class="nav navbar-nav">
-    <li><a href="#">Basic Topnav</a></li>
-    <li><a href="#">Page 1</a></li>
-    <li><a href="#">Page 2</a></li>
-    <li><a href="#">Page 3</a></li>
-  </ul>
-</nav>
-
-<div class="container-fluid" style="height:1000px">
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
+<a name="contact"></a>
+<div class="panel panel-transparent">
+  <div class="panel-heading">
+    <h2 class="panel-title">Contact Us</h2>
+    <p>
+      <h2><a href= "mailto:joeburro@yahoo.com">Click to Email</a></h2>
+      <ul>
+        <li>movieNumbers</li>
+        <li>1234 Mysteria Lane</li>
+        <li>Chicago, IL</li>
+        <li>(773)221-1695</li>
+      </ul>
+    </p>
+  </div>
+  <div class="panel-body">
+  
+  </div>
 </div>
 
-</body>
-</html>  -->
+
+<div class="well">
+  <p id="rock">
+    Movie Budget Records Note: Budget numbers can be both difficult to find and unreliable for movies.
+     Studios often try to keep the information secret and will use accounting tricks to inflate or reduce
+      announced budgets. The data we have is, to the best of our knowledge, accurate but there are gaps and
+      disputed figures. If you have additional information or corrections, please let us know at james@movienumber.com.
+      The profit and loss figures are very rough estimates based on domestic and international box office earnings and domestic video sales,
+    extrapolated to estimate worldwide income to the studio, after deducting retail costs. Estimated expenses are based on
+    the domestic theatrical distribution pattern of the film. More detailed financial analysis of films will be available later.
+  </p>
+
+</div>
+
+
+<footer class="footer">
+  <!-- <div class="container-fluid"> -->
+    <div class="row">
+      <p class="right">
+        A <a href="https://github.com/joegreene12/movieNumbers">DarthVadaCorp</a> production
+      </p>
+
+      <p class="right">
+        Lovingly <em>Not</em> made in Brooklyn.
+      </p>
+    </div>
+  </div>
+</footer>

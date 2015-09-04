@@ -3,7 +3,7 @@ var movienumber = movienumber || {};
 movienumber.blueprints = movienumber.blueprints || {};
 movienumber.active = movienumber.active || {};
 
-
+// blueprints for models & collections
 movienumber.blueprints.model = Backbone.Model.extend({
   initialize: function() {
       console.log('ready with the model');
@@ -15,13 +15,14 @@ movienumber.blueprints.collection = Backbone.Collection.extend({
   model: movienumber.blueprints.model,
   initialize: function() {
     console.log('a collection is ready');
-    this.fetch();
+  this.fetch();
 
-    this.on('change', function() {
+  this.on('change', function() {
 
     });
   }
 });
+
 // CREATE CRUD
 movienumber.create = function(title, yearrelease, productionbudget, worldwidegross) {
 
@@ -36,10 +37,10 @@ movienumber.create = function(title, yearrelease, productionbudget, worldwidegro
     productionbudget: productionbudget,
     worldwidegross: worldwidegross
   });
-  return true;
-
+    return true;
 };
 
+// blueprints for views
 movienumber.blueprints.collectionView = Backbone.View.extend({
   initialize: function() {
     this.$el = $('.movies');
@@ -50,6 +51,7 @@ movienumber.blueprints.collectionView = Backbone.View.extend({
       that.render();
     });
   },
+  // this will empty the container out before the loop
   render: function() {
     this.$el.html('');
 
@@ -78,7 +80,7 @@ movienumber.blueprints.modelView = Backbone.View.extend({
   }
 });
 
-
+// all of the events/triggers
 $(document).ready(function() {
   movienumber.active.moviesCollection = new movienumber.blueprints.collection();
   movienumber.active.moviesCollectionView = new movienumber.blueprints.collectionView({
@@ -88,6 +90,7 @@ $(document).ready(function() {
   $('#add-movienumber').on('click', function(event) {
     event.preventDefault();
 
+// grab the real-time variables
     var title = $('#title').val();
     var yearrelease = $('#yearrelease').val();
     var productionbudget = $('#productionbudget').val();

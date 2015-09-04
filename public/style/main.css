@@ -13,15 +13,52 @@ header {
   display: inline;
 }*/
 
-body {
+/*body {
   background-image: url('https://images.unsplash.com/43/unsplash_52a99f77f30d3_1.JPG?q=80&fm=jpg&s=a8ea326213201b08a0f367048f87dc3a');
   background-repeat: no-repeat;
   background-size: cover;
+}*/
+
+body{
+ width: 100%;
+ position: relative;
+ display: inline-block;
+ background: url('https://images.unsplash.com/43/unsplash_52a99f77f30d3_1.JPG?q=80&fm=jpg&s=a8ea326213201b08a0f367048f87dc3a');
+  background-size: cover;
+ background-attachment: fixed;
 }
 
-#goodtimes {
+
+
+#goodtimes  {
+    background-color:rgba(255, 255, 255, 0.7);
     font-size: 20px !important;
-    width: 85%;
-    margin: 0 auto;
-    padding: 90px;
+    width: 85% !important;
+    margin: 0 auto !important;
+    padding: auto !important;
+}
+/*.panel-body {
+  color: blue;
+  background-color:rgba(255, 255, 255, 0.7) !important;
+  padding: 20px;
+  margin: auto;
+}*/
+
+.panel-transparent  {
+        background: rgba(255, 255, 255, 0.8)!important;
+    }
+
+
+h2 {
+  text-align: center;
+}
+.movies {
+  color: !important;
+}
+
+footer {
+  clear: both;
+  background-color: $primary-contrast-color;
+  padding: 5px 0 15px 3%;
+  height: 75px;
 }
