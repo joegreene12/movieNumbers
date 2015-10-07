@@ -1,5 +1,5 @@
 require './app'
-require './models/Movie'
+require './models/movie'
 # require 'dotenv' Dotenv.load
 require 'money'
 run Sinatra::Application
