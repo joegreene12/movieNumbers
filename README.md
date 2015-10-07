@@ -35,9 +35,6 @@ Outside sources such as OMDB and the-numbers.com have existing APIs but are limi
 
 
 
-Link to your user stories – who are your users, what do they want, and why?
-Keep user stories small and well-defined, and remember – user stories focus on what a user needs, not what development tasks need accomplishing.
-
  Wireframe pic –
 ![alt image] (http://i.imgur.com/8iLZJEN.jpg)
 
